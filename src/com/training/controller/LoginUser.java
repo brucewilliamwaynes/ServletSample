@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.training;
+package com.training.controller;
 
 import java.io.IOException;
 
