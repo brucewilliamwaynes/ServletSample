@@ -11,6 +11,7 @@ import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 
 import com.training.model.User;
+import com.training.repository.DBHandlingClass;
 
 /**
  * @author bridgelabz
@@ -36,8 +37,10 @@ public class RegistrationUser extends GenericServlet{
 		newUser.setPassword(request.getParameter("password"));
 		
 		newUser.setPhoneNumber(request.getParameter("phoneNumber"));
+	
+		DBHandlingClass.writeToDB(newUser);
 		
-		
+		System.out.println("Written Succesfully on DB");
 		
 	}
 
