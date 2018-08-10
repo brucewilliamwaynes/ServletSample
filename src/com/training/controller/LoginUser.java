@@ -9,6 +9,8 @@ import javax.servlet.GenericServlet;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import com.training.model.User;
 import com.training.repository.DBHandlingClass;
@@ -33,6 +35,9 @@ public class LoginUser extends GenericServlet{
 		DBHandlingClass.readFromDB(checkUser);
 		
 		CommonAlgorithms.showUserDetails(checkUser);
+		
+		
+
 		
 	}
 
