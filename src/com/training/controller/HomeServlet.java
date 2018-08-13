@@ -36,16 +36,35 @@ public class HomeServlet extends HttpServlet{
 		//Retrieving user  details from user  
 		User curUser = (User) newSession.getAttribute("User");
 		
-		//Adding new Attribute to request and forwarding to home.jsp 
-		request.setAttribute( "Name",  curUser.getFirstName() );
+		newSession.setAttribute( "Name", curUser.getFirstName() );
 		
-		//Creating new dispatcher to forward request to home.jsp
-		RequestDispatcher newDispatcher;
+		response.sendRedirect("home.jsp");
 		
-		//Initializing newDispatcher
-		newDispatcher = request.getRequestDispatcher( "/home.jsp" );
+		/*Trying to do it with Request Dispatcher
+		if(curUser != null ){
+			
 		
-		newDispatcher.forward(  request   , response );
+			//Adding new Attribute to request and forwarding to home.jsp 
+			request.setAttribute( "Name",  curUser.getFirstName() );
+			
+			//Creating new dispatcher to forward request to home.jsp
+			RequestDispatcher newDispatcher;
+			
+			//Initializing newDispatcher
+			newDispatcher = request.getRequestDispatcher( "home.jsp" );
+			
+			//forwarding request to home.jsp
+			newDispatcher.forward(request , response);
+			
+		}
+		
+		
+		else{
+			
+			response.sendRedirect("loginPage.jsp");
+			
+		}
+		*/
 		
 		return;
 		

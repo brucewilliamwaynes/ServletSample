@@ -8,12 +8,26 @@
 </head>
 <body>
 	<%
+	//Getting current Session
+	HttpSession curSession = request.getSession( false );
 	
-	String curUserName = request.getAttribute("Name").toString();
+	if( ! curSession.equals(null) ){
+	
+		//Retrieving name of user
+		String curUserName = curSession.getAttribute("Name").toString();
+			
+			out.println(" Welcome " + curUserName);
+			
+			//Redirecting to Logout.jsp on button press
+	}	
+	
+	else{
 		
-		out.println(" Welcome " + curUserName);
-		
+		response.sendRedirect( "loginPage.jsp"  );
+	
+	}
 	%>
-<button name="lgnBtn" onclick="location.href = 'loginPage.jsp'"> Log Out </button>
+	<br></br>
+<button name="lgOBtn" onclick="location.href = 'logOut.jsp'"> Log Out </button>
 </body>
 </html>

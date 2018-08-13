@@ -94,8 +94,8 @@ public class DBHandler {
 				//Close the ResultSet
 				detailResult.close();
 				
-				//Redirecting to LoginSuccessfull Page
-				resp.sendRedirect("HomeServlet.java");
+				//Redirecting to Home Servlet
+				resp.sendRedirect("home");
 				
 			}
 			
@@ -131,7 +131,7 @@ public class DBHandler {
 				//Closing the ResultSet
 				emailSet.close();
 				
-				resp.sendRedirect("/loginPage.jsp");
+				resp.sendRedirect("loginPage.jsp");
 				return ;
 				
 			}
@@ -142,7 +142,7 @@ public class DBHandler {
 				//Closing the resultSet
 				emailSet.close();
 				
-				resp.sendRedirect("/regsiter.jsp");
+				resp.sendRedirect("register.jsp");
 				return;
 			}
 		
