@@ -36,6 +36,8 @@ public class DBHandlingClass {
 			
 			connectDetails = DriverManager.getConnection(DBURL);
 			
+			
+			
             preparedStatement = connectUser.prepareStatement(
             		"insert into user values(default, ? , ? );"
             		);
@@ -162,5 +164,51 @@ public class DBHandlingClass {
         }
 
     }
+
+
+	public static boolean checkUserExists(User newUser) {
+		// TODO Auto-generated method stub
+		try{
+			
+			Class.forName("com.mysql.cj.jdbc.Driver");
+			
+			String DBURL = "jdbc:mysql://" + System.getenv("DBHOST") + "/" + System.getenv("DBNAME") + "?user=" + System.getenv("DBUSER") + "&password=" + System.getenv("DBPASSWORD");
+			
+			connectUser = DriverManager.getConnection(DBURL);
+			
+			connectDetails = DriverManager.getConnection(DBURL);
+			
+			preparedStatement = connectUser.prepareStatement(
+					"select * from user where uname =  ?  and upass = ? ;"
+					);
+
+			preparedStatement.setString(1, newUser.getEmailID());
+			
+			preparedStatement.setString(2, newUser.getPassword());
+			
+			ResultSet checkRS = preparedStatement.executeQuery();
+			
+			checkRS.next();
+			
+			if(checkRS != null){
+				return true;
+			}
+			
+		}catch(Exception e){
+			
+			try {
+				throw e;
+			} catch (Exception e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+			
+		}
+		finally{
+			close();
+		}
+		
+		return false;
+	}
 		
 }

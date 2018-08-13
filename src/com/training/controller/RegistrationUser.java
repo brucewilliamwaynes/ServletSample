@@ -12,6 +12,7 @@ import javax.servlet.ServletResponse;
 
 import com.training.model.User;
 import com.training.repository.DBHandlingClass;
+import com.training.utility.CommonAlgorithms;
 
 /**
  * @author bridgelabz
@@ -38,9 +39,19 @@ public class RegistrationUser extends GenericServlet{
 		
 		newUser.setPhoneNumber(request.getParameter("phoneNumber"));
 	
-		DBHandlingClass.writeToDB(newUser);
+		if(!DBHandlingClass.checkUserExists(newUser)){
+			
+			DBHandlingClass.writeToDB(newUser);
 		
-		System.out.println("Written Succesfully on DB");
+			System.out.println("Written Succesfully on DB");
+			
+		}
+		
+		else{
+			
+			System.out.println("User already Exists ! Please retry.");
+			
+		}
 		
 	}
 

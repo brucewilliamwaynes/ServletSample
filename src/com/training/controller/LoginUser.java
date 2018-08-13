@@ -9,6 +9,7 @@ import javax.servlet.GenericServlet;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
+import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -20,7 +21,7 @@ import com.training.utility.CommonAlgorithms;
  * @author bridgelabz
  *
  */
-public class LoginUser extends GenericServlet{
+public class LoginUser extends HttpServlet{
 
 	@Override
 	public void service(ServletRequest request, ServletResponse response) throws ServletException, IOException {
@@ -32,13 +33,16 @@ public class LoginUser extends GenericServlet{
 		
 		checkUser.setPassword(request.getParameter("userPass"));
 		
-		DBHandlingClass.readFromDB(checkUser);
+		if(DBHandlingClass.checkUserExists(checkUser)){
 		
-		CommonAlgorithms.showUserDetails(checkUser);
+			DBHandlingClass.readFromDB(checkUser);
 		
+			CommonAlgorithms.showUserDetails(checkUser);
+		}
 		
-
-		
+		else{
+			
+		}
 	}
 
 }
