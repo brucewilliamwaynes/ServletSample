@@ -85,14 +85,18 @@ public class DBHandler {
 				CommonAlgorithms.mapToUser( detailResult , curUser );
 				
 				//Begin new Session for the current User
-				HttpSession newSession = req.getSession( true );	
+				HttpSession newSession = req.getSession() ;	
 				
 				
 				//Setting new attribute of User object in session
 				newSession.setAttribute( "User"  , curUser);
 				
+				System.out.println( curUser  );
+				
 				//Close the ResultSet
 				detailResult.close();
+				
+				System.out.println( "Before Redirecting"  );
 				
 				//Redirecting to Home Servlet
 				resp.sendRedirect("home");

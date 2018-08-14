@@ -29,7 +29,7 @@ public class HomeServlet extends HttpServlet{
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest request , HttpServletResponse response) throws IOException, ServletException{
-		
+		/*
 		//Retrieving old session
 		HttpSession newSession = request.getSession();
 		
@@ -38,15 +38,17 @@ public class HomeServlet extends HttpServlet{
 		
 		newSession.setAttribute( "Name", curUser.getFirstName() );
 		
-		response.sendRedirect("home.jsp");
+		System.out.println( "Inside Home Servlet"  );
 		
+		response.sendRedirect("home.jsp");
+		*/
 		/*Trying to do it with Request Dispatcher
 		if(curUser != null ){
 			
 		
 			//Adding new Attribute to request and forwarding to home.jsp 
 			request.setAttribute( "Name",  curUser.getFirstName() );
-			
+			*/
 			//Creating new dispatcher to forward request to home.jsp
 			RequestDispatcher newDispatcher;
 			
@@ -55,7 +57,7 @@ public class HomeServlet extends HttpServlet{
 			
 			//forwarding request to home.jsp
 			newDispatcher.forward(request , response);
-			
+		/*	
 		}
 		
 		

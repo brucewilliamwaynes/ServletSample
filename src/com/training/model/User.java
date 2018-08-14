@@ -85,4 +85,10 @@ public String getPhoneNumber() {
 public void setPhoneNumber(String phoneNumber) {
 	this.phoneNumber = phoneNumber;
 }
+
+@Override
+public String toString() {
+	return "User [firstName=" + firstName + ", lastName=" + lastName + ", emailID=" + emailID + ", password=" + password
+			+ ", phoneNumber=" + phoneNumber + "]";
+}
 }

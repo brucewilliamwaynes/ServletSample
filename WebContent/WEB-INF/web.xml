@@ -36,4 +36,7 @@
   <filter-name>AuthFilter</filter-name>
   <url-pattern>/home.jsp</url-pattern>
   </filter-mapping>
+  <listener>
+  <listener-class>com.training.controller.SessionListener</listener-class>
+  </listener>
 </web-app>

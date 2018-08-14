@@ -39,6 +39,8 @@ public class LoginServlet extends HttpServlet{
 			
 			try {
 				
+				System.out.println( "Inside Servlet!"  );
+				
 				dbObj.readDetails(req, resp);
 			
 			} catch (ClassNotFoundException | SQLException e) {

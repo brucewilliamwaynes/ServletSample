@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.training.model.User;
+
 public class AuthenticationFilter implements Filter{
 
 	@Override
@@ -23,8 +25,8 @@ public class AuthenticationFilter implements Filter{
 		
 		HttpSession curSession = req.getSession(false) ;
 		
-		String name =  (String) curSession.getAttribute("Name");
-		
+//		String name =  (String) curSession.getAttribute("Name");
+		/*
 		if( name == null ||  name.isEmpty()  ){
 			
 			resp.sendRedirect("loginPage.jsp");
@@ -35,7 +37,21 @@ public class AuthenticationFilter implements Filter{
 			
 			chain.doFilter( req , resp  );
 			
+		}*/
+		
+		User curUser = ( User )curSession.getAttribute("User");  
+		
+		if( curUser == null ){
+			
+			resp.sendRedirect( "loginPage.jsp" );
 		}
+		
+		else{
+			
+			chain.doFilter( req, resp );
+			
+		}
+		
 		
 	}
 
